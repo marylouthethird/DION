@@ -1,0 +1,19 @@
+# faceservice conda environment (Python 3.10, Apple Silicon / macOS)
+# Create with:
+#   conda create -n faceservice python=3.10 -y
+#   conda activate faceservice
+#   pip install -r requirements.txt
+#
+# IMPORTANT (Apple Silicon): install the Apple-built TensorFlow first, then the rest.
+# DeepFace pulls in generic tensorflow without a version pin and may overwrite the
+# Apple build, which causes a segfault on import. If that happens, re-pin with:
+#   pip install "tensorflow==2.16.2" "tf-keras==2.16.0"
+
+tensorflow==2.16.2
+tf-keras==2.16.0
+opencv-python-headless<4.10
+deepface
+fastapi
+uvicorn[standard]
+python-multipart
+numpy

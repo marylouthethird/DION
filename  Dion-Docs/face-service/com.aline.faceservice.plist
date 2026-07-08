@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Dion Face Service — macOS LaunchAgent
+  Place at: ~/Library/LaunchAgents/com.aline.faceservice.plist
+  Load with:   launchctl load ~/Library/LaunchAgents/com.aline.faceservice.plist
+  Unload with: launchctl unload ~/Library/LaunchAgents/com.aline.faceservice.plist
+
+  RunAtLoad  -> starts the service at login
+  KeepAlive  -> restarts the service automatically if it crashes
+  Std*Path   -> writes stdout / stderr to log files
+
+  Replace "socialmediaappleid" with your own macOS username if reused.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.aline.faceservice</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/socialmediaappleid/miniforge3/envs/faceservice/bin/python</string>
+        <string>/Users/socialmediaappleid/face-service/app.py</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/socialmediaappleid/face-service/service.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/socialmediaappleid/face-service/service.error.log</string>
+</dict>
+</plist>
